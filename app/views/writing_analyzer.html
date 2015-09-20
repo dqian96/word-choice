@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "writing_analyzerApp">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Word Choice: Diversify your Writing</title>
+
+    <!--  CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/writing_analyzer.css">
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-controller="writing_analyzerController">
+   
+    <div class = "container">
+        <div id = "line_section" class = "row">
+            <div class = "col-sm-5 line_container">
+                <div class="hr line"></div>
+            </div>
+            <div class = "col-sm-2">
+                <a href = "/" ><img id = "logo" src = "assets/img/logo.png"></a>
+            </div>
+            <div class = "col-sm-5  line_container">
+                <div class="hr line"></div>
+            </div>
+        </div>
+        <div class = "row">
+            <div  id = "left_column" class = "col-sm-6">
+                <form ng-submit = "submitArticle()">
+                    <div id = "text_submit">
+                        <h1 id = "text_title">Diversify your writing! {{ test }}</h1>
+                        <textarea ng-model = "article" class="form-control" rows="5" id="essay" placeholder = "Copy and paste your article here!"></textarea>
+                        <br>
+                        <p>By using our tool, you AGREE to the <a class = "terms" target = "_blank" href = "/terms">terms and conditions. </a></p>
+                        <div class = "row">
+                            <div id = "analyze_btn_container" class = "col-sm-12">
+                                <button type = "submit" <a href="#" class="pull-right btn btn-success btn-large" id = "analyze_btn">Analyze!</a></button>
+                                <p>The complete analysis of your article is avaliable <a class = "terms" href = "#">here!</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>  
+            <div id = "right_column" class = "col-sm-6">
+                <div id = "graph_display">
+                    <h1 id = "graph_title">Most used Words: </h1>
+                    <canvas id="myBarChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="js/chart_js/Chart.js"></script>
+
+    <!-- CONTROLLER -->
+    <script type="text/javascript" src="/writing_analyzer.client.controller.js"></script>
+    <script type="text/javascript" src="js/writing_analyzer.js"></script>
+</body>
+</html>

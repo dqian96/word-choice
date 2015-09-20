@@ -1,0 +1,31 @@
+body {
+	background-color: #1ABC9C;
+}
+
+h1 {
+	padding-top: 20px;
+	color: white;
+	font-size: 30px;
+	font-family: 'Montserrat', serif;
+}
+
+p {
+	color: white;
+	text-align: left;
+	padding-left: 50px;
+	padding-top: 40px;
+}
+
+
+#terms_container {
+	width: 100%;
+	text-align: center;
+	padding-bottom: 25px;
+	background-color: #34495E;
+	box-shadow: 0 0 30px black;
+
+}
+
+#content_container {
+	padding-top: 30px;
+}

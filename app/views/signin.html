@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "signinApp">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Word Choice: Sign in</title>
+
+    <!--  CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/signin.css">
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-controller="signinController">
+    <div id = "user_inputs" class = "container">
+        <div class = "row">
+            <div class = "col-sm-5 line_container">
+                <div class="hr line"></div>
+            </div>
+            <div class = "col-sm-2">
+                <a href = "/"><img id = "logo" src = "assets/img/logo.png"></a>
+            </div>
+            <div class = "col-sm-5  line_container">
+                <div class="hr line"></div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-sm-6">
+                <div id = "sign_in" class = "container">
+                    <h1 class = "sign_titles">Sign in</h1>
+                    <div class = "row input_container">
+                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Username">
+                    </div>
+                    <div id = "password_padding_sign_in" class = "row input_container">
+                        <input class = "form-control input-lg input_fields" type ="text" placeholder = "Password">
+                    </div>
+                    <div class = "row text-center input_container">
+                        <a href="#" class="btn btn-warning btn-large" id = "sign_in_btn">Sign in</a>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-sm-6">
+                <div  id = "sign_up" class = "container">
+                    <h1 class = "sign_titles">Sign up</h1>
+                    <div class = "row input_container">
+                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Username">
+                    </div>
+                    <div class = "row input_container">
+                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Password">
+                    </div>
+                    <div class = "row input_container">
+                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Email (optional)">
+                    </div>
+                    <div class = "row input_container">
+                        <p class = "input_fields">By signing up, you agree to our <a id = "terms" href = "/terms" target = "_blank"> terms and services. </a></p>
+                    </div>
+                    <div class = "row text-center input_container">
+                        <a href="#" class="btn btn-success btn-large" id = "sign_up_btn">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+  
+
+    <!-- CONTROLLER -->
+    <script type="text/javascript" src="/signin.client.controller.js"></script>
+    <script type="text/javascript" src="js/signin.js"></script>
+</body>
+</html>

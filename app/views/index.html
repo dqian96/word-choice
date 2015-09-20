@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "indexApp">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Word Choice: Home</title>
+
+    <!--  CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-controller="indexController">
+    <div id = "title_screen" class = "container">
+        <div class = "row">
+            <div id = "titles_container">
+                <div id = "text">
+                    <div class = "row">
+                        <h1 class = "home_titles" id = "main_title">Word Choice</h1>
+                    </div>
+                    <div class = "row">
+                        <h4 id = "sub_title" class ="home_titles">Diversify your Writing</h4>
+                    </div>
+                    <div id = "main_buttons" class = "row">
+                        <div class = "col-sm-6" id = "learn-wrapper">
+                            <a href="#about_content" id = "get-started" class="pull-right home_btn btn btn-warning home_titles">Get Started</a>
+                        </div>
+                        <div class = "col-sm-6" id = "get-wrapper">    
+                            <a href="/signin" id = "get-started" class="pull-left home_btn btn btn-warning home_titles">Sign in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id = "content-screen">
+        <div id = "about_content" class = "container">
+        <div class = "row">
+            <div class = "col-sm-5 line_container">
+                <div class="hr line"></div>
+            </div>
+            <div class = "col-sm-2">
+                <img id = "logo" src = "assets/img/logo.png">
+            </div>
+            <div class = "col-sm-5  line_container">
+                <div class="hr line"></div>
+            </div>
+        </div>
+
+            <h2 id = "about_title">ABOUT</h2>
+            <div  class = "row">
+                <div class = "col-sm-6">
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    <br><br>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    <br><br>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                </div>
+                <div id = "graph_pic_container" class = "col-sm-6">
+                    <img id = "graph" src="assets/img/graph.jpg">
+                    <a href="/signin" class="btn btn-success btn-large" id = "sign_up_content"><i class="icon-white icon-pencil"></i>Sign up Now!</a>
+                </div>
+            </div>
+        </div>
+        <div  id = "try_it" class = "container">
+            <a href="/writing_analyzer" class="btn btn-warning btn-large" id = "try_it_content"><i class="icon-white icon-pencil"></i> Try it now! </a>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    
+    <!-- CONTROLLER -->
+    <script type="text/javascript" src="/index.client.controller.js"></script>
+    
+
+</body>
+</html>

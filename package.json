@@ -1,0 +1,19 @@
+{
+  "name": "word_choice",
+  "version": "1.0.0",
+  "description": "A web app to help users' find patterns in their diction and improve their diversity in writing.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Qian",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.5",
+    "body-parser": "^1.14.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.7",
+    "serve-favicon": "^2.3.0"
+  }
+}
