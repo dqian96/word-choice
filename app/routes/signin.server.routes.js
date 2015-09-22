@@ -6,4 +6,6 @@ module.exports = function(app) {
     //of the module.exports function revealed in the about.server module
     app.get('/signin', signin.render);
     app.get('/signin.client.controller.js', signin.getClientController);
+    app.post('/api/post_user_authentication', signin.post_user_authentication);
+    app.post('/api/post_create_user', signin.post_create_user);
 };

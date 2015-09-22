@@ -18,7 +18,6 @@
 </head>
 
 <body ng-controller="writing_analyzerController">
-   
     <div class = "container">
         <div id = "line_section" class = "row">
             <div class = "col-sm-5 line_container">
@@ -35,13 +34,13 @@
             <div  id = "left_column" class = "col-sm-6">
                 <form ng-submit = "submitArticle()">
                     <div id = "text_submit">
-                        <h1 id = "text_title">Diversify your writing! {{ test }}</h1>
+                        <h1 id = "text_title">Diversify your writing!</h1>
                         <textarea ng-model = "article" class="form-control" rows="5" id="essay" placeholder = "Copy and paste your article here!"></textarea>
                         <br>
                         <p>By using our tool, you AGREE to the <a class = "terms" target = "_blank" href = "/terms">terms and conditions. </a></p>
                         <div class = "row">
                             <div id = "analyze_btn_container" class = "col-sm-12">
-                                <button type = "submit" <a href="#" class="pull-right btn btn-success btn-large" id = "analyze_btn">Analyze!</a></button>
+                                <button type = "submit" class="pull-right btn btn-success btn-large" id = "analyze_btn">Analyze!</button>
                                 <p>The complete analysis of your article is avaliable <a class = "terms" href = "#">here!</a></p>
                             </div>
                         </div>

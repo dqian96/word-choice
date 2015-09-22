@@ -4,7 +4,7 @@
 var config = require('./config/config'),
     mongoose = require('./config/mongoose'),
     express = require('./config/express'),
-    favicon = require('serve-favicon');
+    favicon = require('serve-favicon'),
 
     //mongoose.js and express.js modules expose module.exports, which is a function by itself that returns 
     //db and app obj 

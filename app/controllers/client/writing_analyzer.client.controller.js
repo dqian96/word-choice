@@ -2,21 +2,24 @@
 var app = angular.module('writing_analyzerApp', ['ngResource']);
 app.controller('writing_analyzerController', ['$scope', '$resource', function ($scope, $resource) {
   
-  $scope.test = "test"
+  $scope.test = "test";
 
-  var Writing_Analyzer_Server_Controller = $resource("/api/postSubmitArticle");
+  var SubmitArticle = $resource("/api/postSubmitArticle");
 
   $scope.submitArticle = function () {
-  	$scope.test = $scope.article;
+  	$('#analyze_btn').prop('disabled', true);
+  	$('#analyze_btn').text('Hang on...');
+  
+  	var submitArticle = new SubmitArticle();
+  	submitArticle.article = $scope.article;
+  	submitArticle.$save(function (result) {
+  	
+	  	$('#analyze_btn').prop('disabled', false);
+	  	$('#analyze_btn').text('Analyze!');
+	  	console.log(result.analyzed_article);
+  	});
 
-  	var writing_analyzer = new Writing_Analyzer_Server_Controller();
-  	writing_analyzer.name = $scope.test;
-  	console.log($scope.test);
-  	writing_analyzer.$save();
-
-  }
-
-
+  };
 
 
 

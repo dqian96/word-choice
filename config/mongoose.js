@@ -5,5 +5,10 @@ var config = require('./config'),
 
 module.exports = function() {
     var db = mongoose.connect(config.db);
+
+    //Models used
+    require('../app/models/writing_analyzer.server.model');
+    require('../app/models/signin.server.model');
+
     return db;
 };

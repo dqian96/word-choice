@@ -33,36 +33,40 @@
         <div class = "row">
             <div class = "col-sm-6">
                 <div id = "sign_in" class = "container">
-                    <h1 class = "sign_titles">Sign in</h1>
-                    <div class = "row input_container">
-                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Username">
-                    </div>
-                    <div id = "password_padding_sign_in" class = "row input_container">
-                        <input class = "form-control input-lg input_fields" type ="text" placeholder = "Password">
-                    </div>
-                    <div class = "row text-center input_container">
-                        <a href="#" class="btn btn-warning btn-large" id = "sign_in_btn">Sign in</a>
-                    </div>
+                    <form ng-submit = "sign_in()">
+                        <h1 class = "sign_titles">Sign in</h1>
+                        <div class = "row input_container">
+                            <input ng-model = "sign_in_username" class = "form-control input-lg input_fields" type = "text" placeholder = "Username">
+                        </div>
+                        <div id = "password_padding_sign_in" class = "row input_container">
+                            <input ng-model = "sign_in_password" class = "form-control input-lg input_fields" type ="text" placeholder = "Password">
+                        </div>
+                        <div class = "row text-center input_container">
+                            <button type = "submit" class="btn btn-warning btn-large" id = "sign_in_btn">Sign in</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class = "col-sm-6">
                 <div  id = "sign_up" class = "container">
                     <h1 class = "sign_titles">Sign up</h1>
-                    <div class = "row input_container">
-                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Username">
-                    </div>
-                    <div class = "row input_container">
-                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Password">
-                    </div>
-                    <div class = "row input_container">
-                        <input class = "form-control input-lg input_fields" type = "text" placeholder = "Email (optional)">
-                    </div>
-                    <div class = "row input_container">
-                        <p class = "input_fields">By signing up, you agree to our <a id = "terms" href = "/terms" target = "_blank"> terms and services. </a></p>
-                    </div>
-                    <div class = "row text-center input_container">
-                        <a href="#" class="btn btn-success btn-large" id = "sign_up_btn">Sign up</a>
-                    </div>
+                    <form ng-submit = "sign_up()">
+                        <div class = "row input_container">
+                            <input class = "form-control input-lg input_fields" type = "text" ng-model = "sign_up_username" placeholder = "Username">
+                        </div>
+                        <div class = "row input_container">
+                            <input class = "form-control input-lg input_fields" type = "text" ng-model = "sign_up_password" placeholder = "Password">
+                        </div>
+                        <div class = "row input_container">
+                            <input class = "form-control input-lg input_fields" type = "text" ng-model = "sign_up_email" placeholder = "Email (optional)">
+                        </div>
+                        <div class = "row input_container">
+                            <p class = "input_fields">By signing up, you agree to our <a id = "terms" href = "/terms" target = "_blank"> terms and services. </a></p>
+                        </div>
+                        <div class = "row text-center input_container">
+                            <button href="#" class="btn btn-success btn-large" id = "sign_up_btn">Sign up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
