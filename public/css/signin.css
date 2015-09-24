@@ -1,3 +1,7 @@
+.navbar_text {
+	font-family: 'Montserrat', serif;
+}
+
 body {
 	background-color: #1ABC9C;
 }
@@ -26,7 +30,7 @@ a:active {
 }
 
 #user_inputs {
-	padding-top: 30px;
+	padding-top: 55px;
 
 }
 
@@ -92,7 +96,6 @@ a:active {
 	font-family: 'Montserrat', serif;
 	font-size: 20px;
 	width: 45%;
-
 }
 
 ::-webkit-input-placeholder {

@@ -5,11 +5,13 @@ var config = require('./config/config'),
     mongoose = require('./config/mongoose'),
     express = require('./config/express'),
     favicon = require('serve-favicon'),
-
     //mongoose.js and express.js modules expose module.exports, which is a function by itself that returns 
-    //db and app obj 
+    //db and app obj ,
     db = mongoose(),
+    _passport = require('./config/passport'),
+    passport = _passport(),
     app = express();
+
 
 //app listens to port for requests
 app.listen(config.port, '0.0.0.0');
@@ -21,4 +23,3 @@ app.use(favicon(__dirname + '/public/assets/img/logo.ico'));
 
 module.exports = app;
 console.log('Server running at http://localhost:' + config.port);	
-
