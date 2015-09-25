@@ -5,7 +5,7 @@ var StoreArticleSchema = new Schema({
     user: String,
     user_id: String,
     article: String,
-    articleData: Object
+    articleData: Array
 });
 
 mongoose.model('Articles', StoreArticleSchema);

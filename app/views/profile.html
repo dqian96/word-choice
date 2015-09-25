@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" ng-app = "writing_analyzerApp">
+<html lang="en" ng-app = "signinApp">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Word Choice: Diversify your Writing</title>
+    <title>Word Choice: Sign in</title>
 
     <!--  CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/writing_analyzer.css">
+    <link rel="stylesheet" type="text/css" href="css/signin.css">
+    <link rel="stylesheet" href="css/animate.min.css">
 
     <!-- FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
@@ -17,7 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
 
-<body ng-controller="writing_analyzerController" data-ng-init="init()">
+<body ng-controller="signinController" data-ng-init="init()">
     <!-- navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -53,43 +54,55 @@
         </div>
     </nav>
     <!-- navbar -->
-    <div class = "container">
-        <div id = "line_section" class = "row">
+    <div id = "user_inputs" class = "container">
+        <div class = "row">
             <div class = "col-sm-5 line_container">
                 <div class="hr line"></div>
             </div>
             <div class = "col-sm-2">
-                <a href = "/" ><img id = "logo" src = "assets/img/logo.png"></a>
+                <a href = "/"><img id = "logo" src = "assets/img/logo.png"></a>
             </div>
             <div class = "col-sm-5  line_container">
                 <div class="hr line"></div>
             </div>
         </div>
         <div class = "row">
-            <div  id = "left_column" class = "col-sm-6">
-                <form ng-submit = "submitArticle()">
-                    <div id = "text_submit">
-                        <h1 id = "text_title">Diversify your writing!</h1>
-                        <textarea ng-model = "article" class="form-control" rows="5" id="essay" placeholder = "Copy and paste your article here!"></textarea>
-                        <br>
-                        <p>By using our tool, you AGREE to the <a class = "terms" target = "_blank" href = "/terms">terms and conditions. </a></p>
-                        <div class = "row">
-                            <div id = "analyze_btn_container" class = "col-sm-12">
-                                <button type = "submit" class="pull-right btn btn-success btn-large" id = "analyze_btn">Analyze!</button>
-                                <p>The complete analysis of your article is avaliable <a class = "terms" href = "#">here!</a></p>
-                            </div>
+            <div class = "col-sm-6">
+                <div id = "sign_in" class = "container">
+                    <form ng-submit = "sign_in()">
+                        <h1 class = "sign_titles">Sign in</h1>
+                        <div class = "row input_container">
+                            <input ng-model = "sign_in_username" class = "form-control input-lg input_fields" type = "text" placeholder = "Username">
                         </div>
-                        <div id = "analysis_row" class = "row">
-                            <p id = "analysis"></p>
+                        <div id = "password_padding_sign_in" class = "row input_container">
+                            <input ng-model = "sign_in_password" class = "form-control input-lg input_fields" type ="password" placeholder = "Password">
                         </div>
-                    </div>
-                </form>
-
-            </div>  
-            <div id = "right_column" class = "col-sm-6">
-                <div id = "graph_display">
-                    <h1 id = "graph_title">Most used Words: </h1>
-                    <canvas id="myBarChart" width="400" height="400"></canvas>
+                        <div class = "row text-center input_container">
+                            <button type = "submit" class="btn btn-warning btn-large" id = "sign_in_btn">Sign in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class = "col-sm-6">
+                <div  id = "sign_up" class = "container">
+                    <h1 class = "sign_titles">Sign up</h1>
+                    <form ng-submit = "sign_up()">
+                        <div class = "row input_container">
+                            <input class = "form-control input-lg input_fields" type = "text" ng-model = "sign_up_username" placeholder = "Username">
+                        </div>
+                        <div class = "row input_container">
+                            <input class = "form-control input-lg input_fields" type = "password" ng-model = "sign_up_password" placeholder = "Password">
+                        </div>
+                        <div class = "row input_container">
+                            <input class = "form-control input-lg input_fields" type = "text" ng-model = "sign_up_email" placeholder = "Email (optional)">
+                        </div>
+                        <div class = "row input_container">
+                            <p class = "input_fields">By signing up, you agree to our <a id = "terms" href = "/terms" target = "_blank"> terms and services. </a></p>
+                        </div>
+                        <div class = "row text-center input_container">
+                            <button href="#" class="btn btn-success btn-large" id = "sign_up_btn">Sign up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -101,10 +114,12 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
-    <script src="js/chart_js/Chart.js"></script>
+  
+    <script src="js/bootstrap-notify.min.js"></script>
+
 
     <!-- CONTROLLER -->
-    <script type="text/javascript" src="/writing_analyzer.client.controller.js"></script>
-    <script type="text/javascript" src="js/writing_analyzer.js"></script>
+    <script type="text/javascript" src="/signin.client.controller.js"></script>
+    <script type="text/javascript" src="js/signin.js"></script>
 </body>
 </html>

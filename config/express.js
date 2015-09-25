@@ -58,6 +58,7 @@ module.exports = function() {
     require('../app/routes/signin.server.routes.js')(app);
     require('../app/routes/terms.server.routes.js')(app);
     require('../app/routes/writing_analyzer.server.routes.js')(app);
+    require('../app/routes/profile.server.routes.js')(app);
 
     //uses the following directory for static files (depndency injections that each html file may access)
     //middleware 
