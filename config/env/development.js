@@ -2,7 +2,7 @@
 
 //port server uses
 
-var port =  process.env.NODE_ENV || 3000;
+var port =  process.env.NODE_ENV || 80;
 
 
 //array that is exposed externally

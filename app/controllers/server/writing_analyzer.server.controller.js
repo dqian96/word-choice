@@ -110,15 +110,20 @@ exports.generateArticleResults = function (req, res, next) {
                         if (data.adjective) {
                             if (data.adjective.sim) {
                                 var adjSyn = data.adjective.sim;
+                                synonms = synonms + "<br>As an adjective: " + adjSyn.join(" ") + ". || ";
+
                             }
-                            else {
+                            else if (data.adjective.syn) {
                                 var adjSyn = data.adjective.syn;
+                                synonms = synonms + "<br>As an adjective: " + adjSyn.join(" ") + ". || ";
+
                             }
-                            synonms = synonms + "<br>As an adjective: " + adjSyn.join(" ") + ". || ";
                         }
                         if (data.adverb) {
-                            var adverbSyn = data.adverb.syn;
-                            synonms = synonms + "<br>As an adverb: " + adverbSyn.join(" ") + ". || ";
+                            if (data.adverb.syn) {
+                                var adverbSyn = data.adverb.syn;
+                                synonms = synonms + "<br>As an adverb: " + adverbSyn.join(" ") + ". || ";
+                            }
 
                         }     
 

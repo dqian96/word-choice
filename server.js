@@ -14,7 +14,7 @@ var config = require('./config/config'),
 
 
 //app listens to port for requests
-app.listen(config.port, '0.0.0.0');
+app.listen(config.port);
 
 //module.exports is the export of this module/file, or what is shown
 //in this case, the application is the output of this file

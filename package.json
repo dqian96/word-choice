@@ -17,6 +17,7 @@
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
+    "forever": "^0.15.1",
     "mongoose": "^4.1.7",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
