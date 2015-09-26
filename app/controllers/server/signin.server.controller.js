@@ -127,7 +127,7 @@ exports.get_check_user_logged_in = function(req, res, next) {
 
 exports.post_log_out = function(req, res) {
 	if (req.user) {
-		req.logout();
-    	res.redirect('/');
+		req.session.destroy();
+		res.send('/');
 	}
 };

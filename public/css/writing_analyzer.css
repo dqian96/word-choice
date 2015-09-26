@@ -21,12 +21,12 @@ p {
 
 /* mouse over link */
 a:hover {
-
+	color: gold;
 }
 
 /* selected link */
 a:active {
-
+	color: gold;
 }
 
 

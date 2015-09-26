@@ -44,6 +44,8 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
       var signOut = new SignOut();
       signOut.$save(function (result) {
       $window.location.href = "/";
+
+      //something is wrong with this
       });
     }
   };
@@ -71,6 +73,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
         },{
           type: 'success'
         });
+        $window.location.href = "/profile";
       }
     });
   };
@@ -79,7 +82,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
 
     var correct_form_entries = true;
 
-    if (!/^[a-z0-9_-]{3,16}$/.test($scope.sign_up_username)) {
+    if (!/^[A-Za-z0-9_-]{3,16}$/.test($scope.sign_up_username)) {
       console.log($scope.sign_up_username);
       correct_form_entries = false;
       $.notify({
@@ -90,7 +93,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
         type: 'danger'
       });
     }
-    if (!/^[a-z0-9_-]{6,18}$/.test($scope.sign_up_password)) {
+    if (!/^[A-Za-z0-9_-]{6,18}$/.test($scope.sign_up_password)) {
       console.log($scope.sign_up_password);
       correct_form_entries = false;
       $.notify({
@@ -135,6 +138,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
             // settings
             type: 'success'
           });
+          $window.location.href = "/profile";
         }
       });
     }
