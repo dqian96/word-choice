@@ -43,7 +43,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
     if ($scope.right_side_navbar_links[0].url != "/signin") {
       var signOut = new SignOut();
       signOut.$save(function (result) {
-      $window.location.href = "/";
+            //$window.location.href = "/";
 
       //something is wrong with this
       });
@@ -98,7 +98,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
       correct_form_entries = false;
       $.notify({
         // options
-        message: "The password you entered is wrong. Usernames must be between 6-18 characters and can only contain letters, numbers, _, and -."
+        message: "The password you entered is wrong. Passwords must be between 6-18 characters and can only contain letters, numbers, _, and -."
       },{
         // settings
         type: 'danger'

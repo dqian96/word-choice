@@ -1,16 +1,5 @@
 $( document ).ready(function() {
     console.log( "ready!" );
-
-	$(".terms").click(function () {
-		if ($("#analysis_row").css("display") == 'block') {
-		$("#analysis_row").css("display", "none");
-	}
-	else {
-		$("#analysis_row").css("display", "block"); 
-	}
-
-	});
-
 	var data = {
 	    labels:  ["internet", "love", "cat", "cute", "animal", "awesome", "beautiful"],
 	    datasets: [

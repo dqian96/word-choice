@@ -45,7 +45,7 @@ app.controller('writing_analyzerController', ['$scope', '$resource', '$window', 
     if ($scope.right_side_navbar_links[0].url != "/signin") {
       var signOut = new SignOut();
       signOut.$save(function (result) {
-        $window.location.href = "/";
+      //$window.location.href = "/";
       });
     }
   };
@@ -107,8 +107,8 @@ app.controller('writing_analyzerController', ['$scope', '$resource', '$window', 
       });
       console.log(arrayArticleResultsForClient);
 
-      var graphNumberOfWords = 10;
-      if (arrayArticleResultsForClient.length < 10) {
+      var graphNumberOfWords = 7;
+      if (arrayArticleResultsForClient.length < 7) {
          graphNumberOfWords = arrayArticleResultsForClient.length;
       }
       labels = [];
@@ -148,9 +148,6 @@ app.controller('writing_analyzerController', ['$scope', '$resource', '$window', 
       //so it becomes linear on server instead of quadratic
       //not array of objects...instead object with properties as objects
 
-      //to do:
-    
-      //profile  page
 
       for (var i = 0; i < arrayArticleResultsForClient.length; i++) {
           finalAnalysis = finalAnalysis + "<strong>Word: </strong>" + arrayArticleResultsForClient[i].word + " <br>" +
@@ -161,7 +158,7 @@ app.controller('writing_analyzerController', ['$scope', '$resource', '$window', 
 	  	$('#analyze_btn').prop('disabled', false);
 	  	$('#analyze_btn').text('Analyze again!');
       $("#analysis").html(finalAnalysis);
-
+      $("#analysis_row").css("display", "block"); 
 
       //console.log(finalAnalysis);
   	});

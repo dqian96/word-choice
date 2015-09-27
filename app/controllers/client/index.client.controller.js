@@ -44,7 +44,7 @@ app.controller('indexController', ['$scope', '$resource', '$window', function ($
 		if ($scope.right_side_navbar_links[0].url != "/signin") {
 			var signOut = new SignOut();
 			signOut.$save(function (result) {
-			$window.location.href = "/";
+				
 			});
 		}
 	};

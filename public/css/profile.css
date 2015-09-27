@@ -1,0 +1,89 @@
+.navbar_text {
+	font-family: 'Montserrat', serif;
+}
+
+
+#terms  {
+    color: gold;
+}
+
+/* visited link */
+#terms:visited {
+    color: gold;
+}
+
+/* mouse over link */
+a:hover {
+
+}
+
+/* selected link */
+a:active {
+
+}
+
+#line_row {
+	padding-top: 60px;
+	padding-bottom: 0px;
+}
+
+.line {
+	border-top: 1px solid black;
+}
+
+.line_container {
+	padding-top: 60px;
+}
+
+#logo {
+	width: 100%;
+	height: 100%;
+}
+
+
+body {
+	background-color: #1ABC9C;
+}
+
+h1 {
+	padding-top: 20px;
+	color: gold;
+	font-size: 30px;
+	font-family: 'Montserrat', serif;
+}
+
+h4 {
+	padding-top: 20px;
+	color: white;
+	font-size: 30px;
+	font-family: 'Montserrat', serif;
+}
+
+h6 {
+	padding-top: 40px;
+	color: white;
+	font-size: 20px;
+	font-family: 'Montserrat', serif;
+}
+
+
+p {
+	color: white;
+	text-align: left;
+	padding-left: 50px;
+	padding-top: 40px;
+}
+
+
+#profile_container {
+	width: 100%;
+	text-align: center;
+	padding-bottom: 25px;
+	background-color: #34495E;
+	box-shadow: 0 0 30px black;
+
+}
+
+#content_container {
+	padding-top: 30px;
+}

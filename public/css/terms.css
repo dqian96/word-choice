@@ -4,7 +4,7 @@ body {
 
 h1 {
 	padding-top: 20px;
-	color: white;
+	color: gold;
 	font-size: 30px;
 	font-family: 'Montserrat', serif;
 }
@@ -14,6 +14,25 @@ p {
 	text-align: left;
 	padding-left: 50px;
 	padding-top: 40px;
+}
+
+.terms {
+    color: gold;
+}
+
+/* visited link */
+.terms:visited {
+    color: gold;
+}
+
+/* mouse over link */
+a:hover {
+	color: gold;
+}
+
+/* selected link */
+a:active {
+	color: gold;
 }
 
 

@@ -124,10 +124,15 @@ exports.get_check_user_logged_in = function(req, res, next) {
 		res.send(result);
 	}
 };
-
+	
 exports.post_log_out = function(req, res) {
 	if (req.user) {
-		req.session.destroy();
-		res.send('/');
+		//req.logout();
+		//res.redirect('/');
+
+	req.session.destroy(function (err) {
+	    res.redirect('/'); //Inside a callback… bulletproof!
+	 });
+
 	}
 };

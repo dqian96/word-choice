@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" ng-app = "signinApp">
+<html lang="en" ng-app = "profileApp">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Word Choice: Sign in</title>
+    <title>Word Choice: Profile</title>
 
     <!--  CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/signin.css">
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
     <link rel="stylesheet" href="css/animate.min.css">
 
     <!-- FONTS -->
@@ -18,7 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
 
-<body ng-controller="signinController" data-ng-init="init()">
+<body ng-controller="profileController" data-ng-init="init()">
     <!-- navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -54,8 +54,9 @@
         </div>
     </nav>
     <!-- navbar -->
-    <div id = "user_inputs" class = "container">
-        <div class = "row">
+    
+    <div class = "container">
+        <div  id = "line_row" class = "row">
             <div class = "col-sm-5 line_container">
                 <div class="hr line"></div>
             </div>
@@ -66,60 +67,43 @@
                 <div class="hr line"></div>
             </div>
         </div>
-        <div class = "row">
-            <div class = "col-sm-6">
-                <div id = "sign_in" class = "container">
-                    <form ng-submit = "sign_in()">
-                        <h1 class = "sign_titles">Sign in</h1>
-                        <div class = "row input_container">
-                            <input ng-model = "sign_in_username" class = "form-control input-lg input_fields" type = "text" placeholder = "Username">
-                        </div>
-                        <div id = "password_padding_sign_in" class = "row input_container">
-                            <input ng-model = "sign_in_password" class = "form-control input-lg input_fields" type ="password" placeholder = "Password">
-                        </div>
-                        <div class = "row text-center input_container">
-                            <button type = "submit" class="btn btn-warning btn-large" id = "sign_in_btn">Sign in</button>
-                        </div>
-                    </form>
-                </div>
+        <div id = "profile_container" class = "row">
+            <h1 class = "animated bounceInDown">Welcome, {{ username }}</h1>
+            <div class = "animated bounceInUp">
+                <h4>Here's a list of words you use most:</h4>
+                <br>
+                <h6 id = "noArticlesAnalyzedBefore"> Analyze an article first! </h6>
+                <canvas id="myBarChart" width="800" height="400"></canvas>
             </div>
-            <div class = "col-sm-6">
-                <div  id = "sign_up" class = "container">
-                    <h1 class = "sign_titles">Sign up</h1>
-                    <form ng-submit = "sign_up()">
-                        <div class = "row input_container">
-                            <input class = "form-control input-lg input_fields" type = "text" ng-model = "sign_up_username" placeholder = "Username">
-                        </div>
-                        <div class = "row input_container">
-                            <input class = "form-control input-lg input_fields" type = "password" ng-model = "sign_up_password" placeholder = "Password">
-                        </div>
-                        <div class = "row input_container">
-                            <input class = "form-control input-lg input_fields" type = "text" ng-model = "sign_up_email" placeholder = "Email (optional)">
-                        </div>
-                        <div class = "row input_container">
-                            <p class = "input_fields">By signing up, you agree to our <a id = "terms" href = "/terms" target = "_blank"> terms and services. </a></p>
-                        </div>
-                        <div class = "row text-center input_container">
-                            <button href="#" class="btn btn-success btn-large" id = "sign_up_btn">Sign up</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
+
+
         </div>
+
     </div>
 
-
     <!-- SCRIPTS -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68110579-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
   
     <script src="js/bootstrap-notify.min.js"></script>
+    <script src="js/chart_js/Chart.js"></script>
 
 
     <!-- CONTROLLER -->
-    <script type="text/javascript" src="/signin.client.controller.js"></script>
-    <script type="text/javascript" src="js/signin.js"></script>
+    <script type="text/javascript" src="/profile.client.controller.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
 </body>
 </html>

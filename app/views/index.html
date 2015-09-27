@@ -86,7 +86,7 @@
                 <div class="hr line"></div>
             </div>
             <div class = "col-sm-2">
-                <img id = "logo" src = "assets/img/logo.png">
+                <a href = '/'><img id = "logo" src = "assets/img/logo.png"></a>
             </div>
             <div class = "col-sm-5  line_container">
                 <div class="hr line"></div>
@@ -96,14 +96,21 @@
             <h2 id = "about_title">ABOUT</h2>
             <div  class = "row">
                 <div class = "col-sm-6">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    Do you find your essay to be boring, repetitive, or bland? Maybe you need to spice it up by improving your <i>word choice</i>? Diction is an important part of writing. Using a wide variety of words helps create more vivid imagery for the reader. At Word Choice, we allow you to do just that - <i>diversify your writing</i>.
                     <br><br>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    Word Choice is a tool that analyzes submitted articles and suggests synonms for frequently used words. A histogram is created in order to help users visualize their data and a list of synonms is generated thanks to the thesaurus service provided by <a target="_blank"  href = "words.bighugelabs.com">words.bighugelabs.com</a>. <strong>Please be courteous with the number and size of article submissions as we have limited API calls!</strong>
                     <br><br>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    Get started now by clicking "Analyze your writing" on the header or by creating an account. By creating an account, Word Choice can track your most frequently used words. 
+                    <br><br>
+                    Word Choice is created by David Qian, a second year software engineering student at the University of Waterloo. This webapp is built on the MEAN stack and  
+                    <a target="_blank"  class = "links"  href="https://github.com/isNPComplete/word_choice">source code</a> is avaliable under the MIT license. Third party tools such as <a target="_blank" class = "links" href="https://github.com/nnnick/Chart.js">Chart JS</a>, 
+                    <a class = "links" target="_blank"  href="https://github.com/daneden/animate.css">Animate.css</a>
+                    and Material Design concepts were used in this product. If you have any question or concerns, please email  diversifywithwordchoice@gmail.com.
+                    <br><br>
+                    Word Choice is a new product and it is still under construction. Check back soon for updates on new features.
                 </div>
                 <div id = "graph_pic_container" class = "col-sm-6">
-                    <img id = "graph" src="assets/img/graph.jpg">
+                    <img id = "graph" src="assets/img/graph.png">
                     <a href="/signin" class="btn btn-success btn-large" id = "sign_up_content"><i class="icon-white icon-pencil"></i>Sign up Now!</a>
                 </div>
             </div>
@@ -114,6 +121,17 @@
     </div>
 
     <!-- SCRIPTS -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68110579-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
