@@ -1,6 +1,6 @@
-//ENTRY POINT of user (first response)
+//ENTRY POINT of user 
 
-//requiring necessary modules, the return of the module is the object module.exports
+//requiring necessary modules for webapp, the return of the module is the object module.exports
 var config = require('./config/config'),
     mongoose = require('./config/mongoose'),
     express = require('./config/express'),
@@ -11,7 +11,6 @@ var config = require('./config/config'),
     _passport = require('./config/passport'),
     passport = _passport(),
     app = express();
-
 
 //app listens to port for requests
 app.listen(config.port);

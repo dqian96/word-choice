@@ -1,4 +1,4 @@
-//file that describes routes or definition of URIs (request url and response) for the index pg
+//file that describes routes or definitions of urls
 module.exports = function(app) {
     var profile = require('../controllers/server/profile.server.controller');
     app.get('/profile', profile.render);

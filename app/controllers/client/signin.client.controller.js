@@ -1,8 +1,10 @@
+//Client controller for log in page
 var app = angular.module('signinApp', ['ngResource']);
 app.controller('signinController', ['$scope', '$resource', '$window', function ($scope, $resource, $window) {
 
   //Navbar=================================================================
-  //array of objects
+
+  //array of objects for recording the name and respective url of links on the left hand side of nav bar
   $scope.left_side_navbar_links = [
     {name: "Profile",
      url: "/profile"},
@@ -12,19 +14,23 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
      url: "/#about_content"}
   ];
 
+  //urls for right hand side of navbar
   $scope.right_side_navbar_links = [
     {name: "Sign in",
      url: "/signin"
     }
   ];
 
+  //api call for checking if user is logged in
   var UserLoggedIn = $resource("/api/get_check_user_logged_in");
+  //api call for signing users out
   var SignOut = $resource("/api/post_log_out");
 
+  //function run at page load
   $scope.init = function () {
     var userLoggedIn = new UserLoggedIn();
     userLoggedIn.$get(function (result) {
-      //logged in
+      //if user logged in, we adjust links in header
       if (result.username != null) {
         $scope.right_side_navbar_links.shift();  
         $scope.right_side_navbar_links.push(
@@ -33,33 +39,37 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
             url: "/"
           }); 
       }
+      //user not logged in
       else {
         $scope.left_side_navbar_links.shift();
       }
     });
   };  
 
+  //user sign out call
   $scope.signOut = function () {
     if ($scope.right_side_navbar_links[0].url != "/signin") {
       var signOut = new SignOut();
       signOut.$save(function (result) {
-            //$window.location.href = "/";
-
-      //something is wrong with this
       });
     }
   };
   //Navbar=================================================================
 
+  //api calls for sign in and sign up
   var SignIn = $resource("/api/post_user_authentication");
   var SignUp = $resource("/api/post_create_user");
 
+  //when user press sign in button, this function is run
   $scope.sign_in = function () {
     var signIn = new SignIn();
     signIn.username = $scope.sign_in_username;
     signIn.password = $scope.sign_in_password;
-    console.log(signIn);
+    //console.log(signIn);
+
+    //submit username and password to api call for sign in
     signIn.$save(function (result) {
+      //if successful go to profile page
       if (!result.success) {
         $.notify({
           message: result.msg
@@ -78,12 +88,12 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
     });
   };
 
+  //function run if sign up button is pressed
   $scope.sign_up = function () {
-
     var correct_form_entries = true;
-
+    //testing user input using regex
     if (!/^[A-Za-z0-9_-]{3,16}$/.test($scope.sign_up_username)) {
-      console.log($scope.sign_up_username);
+      //console.log($scope.sign_up_username);
       correct_form_entries = false;
       $.notify({
         // options
@@ -94,7 +104,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
       });
     }
     if (!/^[A-Za-z0-9_-]{6,18}$/.test($scope.sign_up_password)) {
-      console.log($scope.sign_up_password);
+      //console.log($scope.sign_up_password);
       correct_form_entries = false;
       $.notify({
         // options
@@ -106,7 +116,7 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
     }
     if (!/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test($scope.sign_up_email)) {
       correct_form_entries = false;
-      console.log($scope.sign_up_email);
+      //console.log($scope.sign_up_email);
       $.notify({
         // options
         message: "A vallid email address is required."
@@ -115,6 +125,8 @@ app.controller('signinController', ['$scope', '$resource', '$window', function (
         type: 'danger'
       });
     }
+
+    //if correct form entries, sign up api call 
     if (correct_form_entries) {
       var signUp = new SignUp();
       signUp.username = $scope.sign_up_username;

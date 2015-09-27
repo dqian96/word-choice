@@ -1,9 +1,10 @@
-//The ngResource module provides interaction support with RESTful services via the $resource service.
+//Client controller for the profile page
 var app = angular.module('profileApp', ['ngResource']);
 app.controller('profileController', ['$scope', '$resource', '$window', function ($scope, $resource, $window) {
 	
 	//Navbar=================================================================
-	//array of objects
+	
+	//array of objects for recording the name and respective url of links on the left hand side of nav bar
 	$scope.left_side_navbar_links = [
 		{name: "Profile",
 		 url: "/profile"},
@@ -13,20 +14,24 @@ app.controller('profileController', ['$scope', '$resource', '$window', function 
 		 url: "/#about_content"}
 	];
 
+	//urls for right hand side of navbar
 	$scope.right_side_navbar_links = [
 		{name: "Sign in",
 		 url: "/signin"
 		}
 	];
 
+	//api call for checking if user is logged in
 	var UserLoggedIn = $resource("/api/get_check_user_logged_in");
+	//api call for signing users out
 	var SignOut = $resource("/api/post_log_out");
 
+	//function run at page load
 	$scope.init = function () {
 		$('#noArticlesAnalyzedBefore').hide();
 		var userLoggedIn = new UserLoggedIn();
 		userLoggedIn.$get(function (result) {
-			//logged in
+			//if user logged in, we adjust links in header
 			if (result.username != null) {
 				$scope.right_side_navbar_links.shift();  
 				$scope.right_side_navbar_links.push(
@@ -36,36 +41,39 @@ app.controller('profileController', ['$scope', '$resource', '$window', function 
 					}); 
 				$scope.username = result.username;
 
+				//api calls for getting user statistics from db
   				var GetUserStatistics = $resource("/api/get_user_statistics");
   				var getUserStatistics = new GetUserStatistics();
     			getUserStatistics.$get(function (result) {
+    				//result is an object with articlesData as a property
+    				//articleData's value is an array of objects (one object for each user submitted article)
     				var numberOfArticles = result.articlesData.length;
-
     				if (numberOfArticles == 0) {
     					$('#noArticlesAnalyzedBefore').show();
     					return;
     				}
-    				//array of objects
+    				//array of article objcts
     				var arrayOfArticles = result.articlesData;
+    				
+    				//array of objects to store most frequently used words (one object for each word)
     				var mostFrequentlyUsedWords = [];
-    				//for each article
 
+    				//for each article
     				for (var i = 0; i < numberOfArticles; i++) {
     					//for each word in each article
 	    				for (var oneOfManySynonms in arrayOfArticles[i].articleData[0]) {
 					        if ((arrayOfArticles[i].articleData[0]).hasOwnProperty(oneOfManySynonms)) {
 					            var alreadyInArray = false;
-					            //if  in array
-					            console.log(oneOfManySynonms);
+					            //check if the word in the article is already recoreded in mostFrequentlyUsedWords
 					            for (var j = 0; j < mostFrequentlyUsedWords.length; j++) {
-					            	//found in array to record most used words
+					            	//entered in array already
 					            	if (mostFrequentlyUsedWords[j].word == oneOfManySynonms) {
 					            		mostFrequentlyUsedWords[j].frequency += arrayOfArticles[i].articleData[0][oneOfManySynonms].frequency; 
 					            		alreadyInArray = true;
 					            		break;
 					            	}
 					            }
-					            //if not in array yet
+					            //if not in mostfrequentlyusedwords yet, add it as an object
 					            if (!alreadyInArray) {
 					            	mostFrequentlyUsedWords.push({
 						              word: oneOfManySynonms,
@@ -76,15 +84,20 @@ app.controller('profileController', ['$scope', '$resource', '$window', function 
 					      } 
     				}
 
+    				//sort array in order of decreasing word frequency 
     				mostFrequentlyUsedWords.sort(function(word1, word2){
 			          return -1*(word1.frequency-word2.frequency);
 			      	});
 
+    				//max number of words on graph
 					var graphNumberOfWords = 15;
 					if (mostFrequentlyUsedWords.length < 15) {
 						graphNumberOfWords = mostFrequentlyUsedWords.length;
 					}
+
+					//word array
 					var labels = [];
+					//frequency array
 					var labelsData = [];
 
 					for (var count = 0; count < graphNumberOfWords; count++) {
@@ -92,6 +105,7 @@ app.controller('profileController', ['$scope', '$resource', '$window', function 
 						labelsData.push(mostFrequentlyUsedWords[count].frequency);
 					}
 
+					//data for graph
 					var data = {
 					  labels:  labels,
 					  datasets: [
@@ -111,35 +125,25 @@ app.controller('profileController', ['$scope', '$resource', '$window', function 
 					};
 					var ctx = document.getElementById("myBarChart").getContext("2d");
 					var myBarChartUserUpdated = new Chart(ctx).Bar(data, options);
-    				console.log(mostFrequentlyUsedWords);
-
-
+    				//console.log(mostFrequentlyUsedWords);
     			});
 
 
 			}
+			//user not logged in
 			else {
 				$scope.left_side_navbar_links.shift();
-				//redirect from profile page if not signed in
-				$window.location.href = "/";
 			}
 		});
 	};  
-
+	//user sign out call
 	$scope.signOut = function () {
 		if ($scope.right_side_navbar_links[0].url != "/signin") {
 			var signOut = new SignOut();
 			signOut.$save(function (result) {
-			//$window.location.href = "/";
 			});
 		}
 	};
 	//Navbar=================================================================
-
-
-
-
-
-
 
 }]);

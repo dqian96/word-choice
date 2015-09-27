@@ -11,48 +11,32 @@ var config = require('./config'),
 
 
 //module.exports is the export of this file express.js (what is shown externally)
-//in this case, the module.exports or the export itself is a function that returns aspp
+//in this case, the module.exports or the export itself is a function that returns apps
 module.exports = function() {
     var app = express();
-
-    //replacement
-    //app.set('views', './app/views');
-	//app.set('view engine', 'html');
 
     //BODY-PARSER
     //Express doesn't come with a built in body parser, or a tool/parser to parse/understand
     //json files.
-    //The thing is, when files are sent from the client controller to server controller (rest api)
+    //When files are sent from the client controller to server controller (rest api)
     //it is in the JSON format, body parser allows express to understand json
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-
     app.use(bodyParser.json());
 
-    //expression-session
-    /*
+    //module to parse cookies
     app.use(cookieParser());
-    app.use(session({
-        secret: 'word_choice_session_secret_long_secret_are_great',
-        saveUninitialized: true,
-        resave: true,
-        cookie: { secure: true, maxAge: false}
-    }));
-   
-    */
-
-   //passport js
-
-
-    app.use(cookieParser());
+    //session info
     app.use(session({
         saveUninitialized: true,
         resave: true,
         secret: 'i_hope_you_like_this_i_put_alot_of_work_into_this'
     }));
+    //use passport module for sessions
     app.use(passport.initialize());
     app.use(passport.session());
+    
 	//requiring the files that handles routes for the app
     require('../app/routes/index.server.routes.js')(app);
     require('../app/routes/signin.server.routes.js')(app);

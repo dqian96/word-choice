@@ -1,9 +1,7 @@
 //easy to edit file that describes server info
 
 //port server uses
-
 var port =  process.env.NODE_ENV || 3000;
-
 
 //array that is exposed externally
 //port and db used

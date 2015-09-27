@@ -1,4 +1,4 @@
-//file that describes routes or definition of URIs (request url and response) for the index pg
+//file that describes routes or definitions of urls
 module.exports = function(app) {
     var writing_analyzer = require('../controllers/server/writing_analyzer.server.controller');
     app.get('/writing_analyzer', writing_analyzer.render);

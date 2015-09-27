@@ -1,23 +1,32 @@
-//server controller for index page
+//server controller for sign in page
 var path = require('path'),
+	//model for recording users
 	User = require('mongoose').model('User'),
+	//md5 hashing
 	crypto = require('crypto'),
+	//user auth
 	passport = require('passport');
 
+//give html file
 exports.render = function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../../views/signin.html'));
 };
 
+//give client controller
 exports.getClientController = function(req, res) {
     res.sendFile(path.resolve(__dirname + '/../client/signin.client.controller.js'));
 };
 
 
+//checking user authentications
 exports.post_user_authentication = function (req, res, next) {
-	console.log(req.session);
+	//console.log(req.session);
 
+	//if no user signed in
 	if (!req.user) {
+		//use passport to authenticate using the local strategy
 		passport.authenticate('local', function(err, user, info) {
+			//callback function after trying to authenticate
 			if (err) {
 				return next(err); 
 			}
@@ -47,6 +56,7 @@ exports.post_user_authentication = function (req, res, next) {
 			}
 		})(req, res, next); 
 	}
+	//user already logged in
 	else {		        
 	    var result = {
 	    	status: 3,
@@ -57,35 +67,30 @@ exports.post_user_authentication = function (req, res, next) {
 	}
 };
 
-
-
-//uses User model to create new user
-//first creates user object from HTTP request bdy
+//creates new user entry based on the User model
+//first creates user object from HTTP request body
 //then tries to save to mongodb, and if error occurs, logs it otherwise
-//we login usign passport's login function
+//login if successful
 exports.post_create_user = function (req, res, next) {
-    //if not signed in
-    console.log(req.session);
-    //duplicate key error pssible here
+    //console.log(req.session);
+    //if not logged in
     if (!req.user) {
-    	//creating user model
-    	//body contains username, pass, email, we set fields in constructor
+ 		//creates new user object from req.body (flls in the key-value pairs that a document in the User collection requries/schema)
         var user = new User(req.body);
         user.provider = 'local';
 
-        //save user creation to db, and callback function run
+        //save user creation to db
         user.save(function(err) {
             if (err) {
-            	console.log(err);
-            	//duplicate key possibly will error ere
-               	var result = {
+            	//duplicate username error
+            	var result = {
                		status: 5,
                		success: false,
 					msg: "Username has been taken, please try a new one"
 				};
 				res.send(result);  
             }
-            //login
+            //no error -> try to log in
             req.login(user, function(err) {
                 if (err) {
                     return next(err);
@@ -99,6 +104,7 @@ exports.post_create_user = function (req, res, next) {
             });
         });
     }
+    //already signed in
     else {
        	var result = {
        		status: 3,
@@ -109,14 +115,17 @@ exports.post_create_user = function (req, res, next) {
     }
 };
 
+//check if user logged in
 exports.get_check_user_logged_in = function(req, res, next) {
 	if (req.user) {
 		var username = req.user.username;
 		var result = {
 			username: username
 		};
+		//if logged in, sends username
 		res.send(result);
 	}
+	//not logged in, username is null
 	else {
 		var result = {
 			username: null
@@ -124,15 +133,12 @@ exports.get_check_user_logged_in = function(req, res, next) {
 		res.send(result);
 	}
 };
-	
+
+//useer log out	
 exports.post_log_out = function(req, res) {
 	if (req.user) {
-		//req.logout();
-		//res.redirect('/');
-
-	req.session.destroy(function (err) {
-	    res.redirect('/'); //Inside a callback… bulletproof!
-	 });
-
+		req.session.destroy(function (err) {
+		    res.redirect('/');
+		});
 	}
 };

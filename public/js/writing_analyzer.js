@@ -1,5 +1,6 @@
 $( document ).ready(function() {
     console.log( "ready!" );
+    //generating intial graph
 	var data = {
 	    labels:  ["internet", "love", "cat", "cute", "animal", "awesome", "beautiful"],
 	    datasets: [

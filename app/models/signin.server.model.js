@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 	//md5 encryption for pass
 	crypto = require('crypto');
 
+//Schema for document in User collection
 var UserSchema = new Schema({
     username: {
         type: String,
@@ -11,22 +12,20 @@ var UserSchema = new Schema({
     },
     password: String,
    	email: String,
-   	//strategy used to register user
     provider: String,
-    //the user identifier for the authentication strategy
     providerId: String
 });
-
 
 //presave middleware (software compoenent that runs before save)
 //for creating a md5 hash of the password for security
 UserSchema.pre('save',
+    //before we save a document in the User schema to the db, run the following function
     function(next) {
         if (this.password) {
+            //create a md5 hash of the password
             var md5 = crypto.createHash('md5');
             this.password = md5.update(this.password).digest('hex');
         }
-
         next();
     }
 );
@@ -39,30 +38,6 @@ UserSchema.methods.authenticate = function(password) {
     return this.password === md5;
 };
 
-
-//findUniqueUsername() static method,
-//to find an anavlaible user name for 
-//new users
-UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
-    var _this = this;
-    var possibleUsername = username + (suffix || '');
-
-    _this.findOne(
-        {username: possibleUsername},
-        function(err, user) {
-            if (!err) {
-                if (!user) {
-                    callback(possibleUsername);
-                }
-                else {
-                    return _this.findUniqueUsername(username, (suffix || 0) + 1, callback);
-                }
-            }
-            else {
-                callback(null);
-            }
-        }
-    );
-};
-
+//User collection/class based on UserSchema
+//each document in this collection/class is an instance of the model/class
 mongoose.model('User', UserSchema);
