@@ -171,7 +171,7 @@
             finalAnalysis = finalAnalysis + "<strong>Word: </strong>" + arrayArticleResultsForClient[i].word + " <br>" +
             "<strong>Frequency: </strong>" + arrayArticleResultsForClient[i].frequency + "<br>" +
             "<strong>Percentage Frequency: </strong>" + arrayArticleResultsForClient[i].percentFrequency + " <br>" +
-            "<strong>Synonms: </strong>" + arrayArticleResultsForClient[i].synonms + "<br><br>";
+            "<strong>Synonyms: </strong>" + arrayArticleResultsForClient[i].synonms + "<br><br>";
         }
 
   	  	$("#analyze_btn").prop('disabled', false);
