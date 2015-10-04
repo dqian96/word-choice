@@ -144,7 +144,7 @@
           labels.push(arrayArticleResultsForClient[count].word);
           labelsData.push(arrayArticleResultsForClient[count].frequency);
         }
-        $('#myBarChart').replaceWith('<canvas id="myBarChartUserUpdated" width="400" height="400"></canvas>');
+        $('#myBarChart').replaceWith('<canvas id="myBarChart" width="400" height="400"></canvas>');
         var data = {
             labels:  labels,
             datasets: [
@@ -162,9 +162,9 @@
           scaleFontColor: "white",
           scaleLineColor: "white"
         };
-        var ctx = document.getElementById("myBarChartUserUpdated").getContext("2d");
+        var ctx = document.getElementById("myBarChart").getContext("2d");
         //generate graph
-        var myBarChartUserUpdated = new Chart(ctx).Bar(data, options);
+        var myBarChart= new Chart(ctx).Bar(data, options);
 
         //looping through array for words to generate html output
         for (var i = 0; i < arrayArticleResultsForClient.length; i++) {
